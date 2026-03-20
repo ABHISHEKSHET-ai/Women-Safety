@@ -43,3 +43,7 @@ build/
 ### OS Files ###
 .DS_Store
 Thumbs.db
+
+### Local Binaries and Data ###
+ngrok.exe
+uploads/

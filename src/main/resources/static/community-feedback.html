@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Feedback - Women Safety</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>🛡️ Women Safety</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">🏠 Dashboard</a></li>
+                <li><a href="profile.html">👤 Profile</a></li>
+                <li><a href="emergency-contacts.html">📞 Emergency Contacts</a></li>
+                <li><a href="alert-history.html">📋 Alert History</a></li>
+                <li><a href="report-area.html">⚠️ Report Unsafe Area</a></li>
+                <li><a href="community-feedback.html" class="active">🗺️ Community Feedback</a></li>
+                <li><a href="settings.html">⚙️ Settings</a></li>
+                <li><a href="#" id="logoutBtn">🚪 Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Community Unsafe Zones</h1>
+                <div class="legend">
+                    <span class="legend-item"><span class="marker marker-high"></span> High Risk</span>
+                    <span class="legend-item"><span class="marker marker-medium"></span> Medium Risk</span>
+                    <span class="legend-item"><span class="marker marker-low"></span> Low Risk</span>
+                </div>
+            </header>
+
+            <div id="communityMap" class="community-map"></div>
+
+            <div class="feedback-list">
+                <h3>Recent Reports</h3>
+                <div id="reportsList">
+                    <p class="loading">Loading reports...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/community-feedback.js"></script>
+</body>
+</html>

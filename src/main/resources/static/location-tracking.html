@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Location Tracking - Women Safety</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="tracking-container">
+        <header class="tracking-header">
+            <h1>🚨 Live Location Tracking</h1>
+            <div class="alert-status">
+                <span id="statusBadge" class="status-active">● Active</span>
+            </div>
+        </header>
+
+        <div id="map" class="location-map"></div>
+
+        <div class="tracking-info">
+            <div class="info-card">
+                <h3>Alert ID: <span id="alertId"></span></h3>
+                <p>Started: <span id="alertTime"></span></p>
+                <p>Location: <span id="currentLocation">Loading...</span></p>
+            </div>
+
+            <div class="location-history">
+                <h3>Location History</h3>
+                <div id="locationHistory"></div>
+            </div>
+        </div>
+
+        <div class="tracking-actions">
+            <a href="dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/location-tracking.js"></script>
+</body>
+</html>

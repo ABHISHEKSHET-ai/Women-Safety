@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert History - Women Safety</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>🛡️ Women Safety</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">🏠 Dashboard</a></li>
+                <li><a href="profile.html">👤 Profile</a></li>
+                <li><a href="emergency-contacts.html">📞 Emergency Contacts</a></li>
+                <li><a href="alert-history.html" class="active">📋 Alert History</a></li>
+                <li><a href="evidence.html">📸 Evidence</a></li>
+                <li><a href="report-area.html">⚠️ Report Unsafe Area</a></li>
+                <li><a href="community-feedback.html">🗺️ Community Feedback</a></li>
+                <li><a href="settings.html">⚙️ Settings</a></li>
+                <li><a href="#" id="logoutBtn">🚪 Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Alert History</h1>
+            </header>
+
+            <div id="alertsList" class="alerts-list">
+                <p class="loading">Loading alert history...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/alert-history.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Unsafe Area - Women Safety</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>🛡️ Women Safety</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">🏠 Dashboard</a></li>
+                <li><a href="profile.html">👤 Profile</a></li>
+                <li><a href="emergency-contacts.html">📞 Emergency Contacts</a></li>
+                <li><a href="alert-history.html">📋 Alert History</a></li>
+                <li><a href="report-area.html" class="active">⚠️ Report Unsafe Area</a></li>
+                <li><a href="community-feedback.html">🗺️ Community Feedback</a></li>
+                <li><a href="settings.html">⚙️ Settings</a></li>
+                <li><a href="#" id="logoutBtn">🚪 Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Report Unsafe Area</h1>
+            </header>
+
+            <div class="report-container">
+                <div id="reportMap" class="report-map"></div>
+
+                <form id="reportForm" class="report-form">
+                    <input type="hidden" id="latitude">
+                    <input type="hidden" id="longitude">
+
+                    <div class="form-group">
+                        <label>Location *</label>
+                        <p id="selectedLocation" class="selected-location">Click on the map to select location</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description *</label>
+                        <textarea id="description" rows="4" required
+                                  placeholder="Describe the unsafe situation or concern..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="riskLevel">Risk Level *</label>
+                        <select id="riskLevel" required>
+                            <option value="">Select risk level</option>
+                            <option value="LOW">Low</option>
+                            <option value="MEDIUM">Medium</option>
+                            <option value="HIGH">High</option>
+                        </select>
+                    </div>
+
+                    <div id="reportError" class="error-message" style="display: none;"></div>
+                    <div id="reportSuccess" class="success-message" style="display: none;"></div>
+
+                    <button type="submit" class="btn btn-primary">Submit Report</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/location.js"></script>
+    <script src="js/report-area.js"></script>
+</body>
+</html>

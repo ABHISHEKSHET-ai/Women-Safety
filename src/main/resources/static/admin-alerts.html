@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Alerts - Admin - Women Safety</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>🔐 Admin Panel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin-dashboard.html">📊 Dashboard</a></li>
+                <li><a href="admin-alerts.html" class="active">🚨 Active Alerts</a></li>
+                <li><a href="admin-users.html">👥 Manage Users</a></li>
+                <li><a href="admin-reports.html">📍 Unsafe Reports</a></li>
+                <li><a href="#" id="adminLogoutBtn">🚪 Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Active Alerts</h1>
+                <p>Monitor and manage emergency alerts from users</p>
+            </header>
+
+            <div class="filter-section">
+                <select id="statusFilter" class="form-control">
+                    <option value="">All Statuses</option>
+                    <option value="ACTIVE" selected>Active</option>
+                    <option value="RESOLVED">Resolved</option>
+                    <option value="FALSE_ALARM">False Alarm</option>
+                </select>
+            </div>
+
+            <div id="alertsContainer" class="table-container">
+                <p class="loading">Loading alerts...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Alert Detail Modal -->
+    <div id="alertModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Alert Details</h2>
+            <div id="alertDetails"></div>
+            <div class="modal-actions">
+                <button class="btn btn-success" onclick="updateStatus('RESOLVED')">Mark Resolved</button>
+                <button class="btn btn-warning" onclick="updateStatus('FALSE_ALARM')">False Alarm</button>
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin-alerts.js"></script>
+</body>
+</html>

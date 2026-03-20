@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Women Safety</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>🔐 Admin Panel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin-dashboard.html" class="active">📊 Dashboard</a></li>
+                <li><a href="admin-alerts.html">🚨 Active Alerts</a></li>
+                <li><a href="admin-users.html">👥 Manage Users</a></li>
+                <li><a href="admin-reports.html">📍 Unsafe Reports</a></li>
+                <li><a href="#" id="adminLogoutBtn">🚪 Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Admin Dashboard</h1>
+            </header>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-details">
+                        <h3 id="totalUsers">-</h3>
+                        <p>Total Users</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🚨</div>
+                    <div class="stat-details">
+                        <h3 id="activeAlerts">-</h3>
+                        <p>Active Alerts</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">📍</div>
+                    <div class="stat-details">
+                        <h3 id="pendingReports">-</h3>
+                        <p>Pending Reports</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-sections">
+                <div class="admin-section">
+                    <h2>Recent Alerts</h2>
+                    <div id="recentAlerts" class="table-container">
+                        <p class="loading">Loading...</p>
+                    </div>
+                    <a href="admin-alerts.html" class="btn btn-secondary">View All Alerts</a>
+                </div>
+
+                <div class="admin-section">
+                    <h2>Pending Reports</h2>
+                    <div id="pendingReportsList" class="table-container">
+                        <p class="loading">Loading...</p>
+                    </div>
+                    <a href="admin-reports.html" class="btn btn-secondary">View All Reports</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

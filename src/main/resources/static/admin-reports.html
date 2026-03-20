@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsafe Area Reports - Admin - Women Safety</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>🔐 Admin Panel</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="admin-dashboard.html">📊 Dashboard</a></li>
+                <li><a href="admin-alerts.html">🚨 Active Alerts</a></li>
+                <li><a href="admin-users.html">👥 Manage Users</a></li>
+                <li><a href="admin-reports.html" class="active">📍 Unsafe Reports</a></li>
+                <li><a href="#" id="adminLogoutBtn">🚪 Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Unsafe Area Reports</h1>
+                <p>Review and approve community-reported unsafe areas</p>
+            </header>
+
+            <div class="filter-section">
+                <select id="statusFilter" class="form-control">
+                    <option value="">All Statuses</option>
+                    <option value="PENDING" selected>Pending</option>
+                    <option value="APPROVED">Approved</option>
+                    <option value="REJECTED">Rejected</option>
+                </select>
+            </div>
+
+            <div id="reportsContainer" class="table-container">
+                <p class="loading">Loading reports...</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Report Detail Modal -->
+    <div id="reportModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Report Details</h2>
+            <div id="reportDetails"></div>
+            <div class="modal-actions">
+                <button class="btn btn-success" onclick="updateReportStatus('APPROVED')">Approve</button>
+                <button class="btn btn-danger" onclick="updateReportStatus('REJECTED')">Reject</button>
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin-reports.js"></script>
+</body>
+</html>

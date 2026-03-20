@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Contacts - Women Safety</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>🛡️ Women Safety</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">🏠 Dashboard</a></li>
+                <li><a href="profile.html">👤 Profile</a></li>
+                <li><a href="emergency-contacts.html" class="active">📞 Emergency Contacts</a></li>
+                <li><a href="alert-history.html">📋 Alert History</a></li>
+                <li><a href="evidence.html">📸 Evidence</a></li>
+                <li><a href="report-area.html">⚠️ Report Unsafe Area</a></li>
+                <li><a href="community-feedback.html">🗺️ Community Feedback</a></li>
+                <li><a href="settings.html">⚙️ Settings</a></li>
+                <li><a href="#" id="logoutBtn">🚪 Logout</a></li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Emergency Contacts</h1>
+                <button id="addContactBtn" class="btn btn-primary">+ Add Contact</button>
+            </header>
+
+            <div id="contactsList" class="contacts-list">
+                <p class="loading">Loading contacts...</p>
+            </div>
+
+            <div id="contactModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 id="modalTitle">Add Emergency Contact</h2>
+                    <form id="contactForm">
+                        <input type="hidden" id="contactId">
+                        <div class="form-group">
+                            <label for="contactName">Name *</label>
+                            <input type="text" id="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone">Phone Number *</label>
+                            <input type="tel" id="contactPhone" pattern="[0-9]{10}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactRelation">Relation</label>
+                            <input type="text" id="contactRelation" placeholder="e.g., Mother, Friend">
+                        </div>
+                        <div id="contactError" class="error-message" style="display: none;"></div>
+                        <div class="modal-actions">
+                            <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Save Contact</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/emergency-contacts.js"></script>
+</body>
+</html>

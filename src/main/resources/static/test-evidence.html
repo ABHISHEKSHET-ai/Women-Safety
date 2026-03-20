@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evidence API Test</title>
+    <style>
+        body { font-family: Arial; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .success { color: green; }
+        .error { color: red; }
+        input { padding: 8px; margin: 5px; width: 300px; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Evidence API Test Page</h1>
+    
+    <div class="section">
+        <h2>Step 1: Login</h2>
+        <input type="email" id="email" placeholder="Email" value="trisha1@gmail.com">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="testLogin()">Login</button>
+        <div id="loginResult"></div>
+    </div>
+
+    <div class="section">
+        <h2>Step 2: Check Auth Status</h2>
+        <button onclick="checkAuthStatus()">Check Auth</button>
+        <div id="authStatus"></div>
+    </div>
+
+    <div class="section">
+        <h2>Step 3: Load Evidence</h2>
+        <button onclick="loadEvidence()">Load Evidence</button>
+        <div id="evidenceResult"></div>
+    </div>
+
+    <div class="section">
+        <h2>Step 4: Database Check</h2>
+        <button onclick="checkDatabase()">Check DB</button>
+        <div id="dbResult"></div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+        async function testLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const result = document.getElementById('loginResult');
+            
+            try {
+                const response = await API.login({ email, password });
+                localStorage.setItem('token', response.token);
+                localStorage.setItem('userId', response.userId);
+                localStorage.setItem('userName', response.name);
+                localStorage.setItem('userEmail', response.email);
+                
+                result.innerHTML = `<p class="success">✅ Login successful!<br>Token: ${response.token.substring(0, 20)}...</p>`;
+            } catch (error) {
+                result.innerHTML = `<p class="error">❌ Login failed: ${error.message}</p>`;
+            }
+        }
+
+        function checkAuthStatus() {
+            const result = document.getElementById('authStatus');
+            const token = localStorage.getItem('token');
+            const userId = localStorage.getItem('userId');
+            
+            result.innerHTML = `
+                <pre>
+Token: ${token ? token.substring(0, 50) + '...' : 'NOT FOUND'}
+User ID: ${userId || 'NOT FOUND'}
+User Name: ${localStorage.getItem('userName') || 'NOT FOUND'}
+User Email: ${localStorage.getItem('userEmail') || 'NOT FOUND'}
+                </pre>
+            `;
+        }
+
+        async function loadEvidence() {
+            const result = document.getElementById('evidenceResult');
+            
+            try {
+                result.innerHTML = '<p>Loading...</p>';
+                const evidence = await apiCall('/alerts/evidence/all', { method: 'GET' });
+                
+                result.innerHTML = `
+                    <p class="success">✅ Evidence loaded: ${evidence.length} items</p>
+                    <pre>${JSON.stringify(evidence, null, 2)}</pre>
+                `;
+            } catch (error) {
+                result.innerHTML = `<p class="error">❌ Failed: ${error.message}</p>`;
+            }
+        }
+
+        async function checkDatabase() {
+            const result = document.getElementById('dbResult');
+            result.innerHTML = `
+                <h3>Database Status:</h3>
+                <p>Check your MySQL database with:</p>
+                <pre>
+mysql -u root -p
+USE women_safety_db;
+SELECT COUNT(*) FROM alert_media;
+SELECT am.id, am.alert_id, am.media_type, a.user_id 
+FROM alert_media am 
+JOIN alerts a ON am.alert_id = a.id 
+LIMIT 5;
+                </pre>
+            `;
+        }
+    </script>
+</body>
+</html>
